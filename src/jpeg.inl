@@ -32,16 +32,7 @@
 #endif
 
 #if defined (ARDUINO_ARCH_ESP32) && !defined(NO_SIMD)
-#include "dsps_fft2r_platform.h"
-#if (dsps_fft2r_sc16_aes3_enabled == 1)
-#define ESP32S3_SIMD
-extern "C" {
-void s3_ycbcr_convert_444(uint8_t *pY, uint8_t *pCB, uint8_t *pCR, uint16_t *pOut, int16_t *pConsts, uint8_t ucPixelType);
-void s3_ycbcr_convert_420(uint8_t *pY, uint8_t *pCB, uint8_t *pCR, uint16_t *pOut, int16_t *pConsts, uint8_t ucPixelType);
-void s3_dequant(int16_t *pMCU, int16_t *pQuant);
-}
-int16_t i16_Consts[8] = {0x80, 113, 90, 22, 46, 1,32,2048};
-#endif // S3 SIMD
+
 #endif // ESP32
 
 #if defined( __x86_64__ ) && !defined(NO_SIMD)
